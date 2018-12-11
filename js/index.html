@@ -25,18 +25,70 @@
     }
 
     .canvas {
-      position:fixed;
+      position: fixed;
       top: center;
       left: center;
       width: 670px;
       height: 500px;
       margin: 0 auto;
-      border: 1px solid blue;
     }
 
     .map {
       display: flex;
       justify-content: center;
+    }
+
+    .overlay-lose {
+      position: fixed;
+      display: none;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      background-color: rgba(63, 54, 54, 0.7);
+    }
+
+    .overlay-lose .popup {
+      position: fixed;
+      left: 50%;
+      top: 40%;
+      width: 400px;
+      border-radius: 10px;
+      border: none;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
+
+    .overlay-lose .popup-close {
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      font-size: 48px;
+      color: #3187af;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .overlay-lose .popup-close:hover {
+      right: -45px;
+      top: -45px;
+      font-size: 56px;
+      color: #3e98c2;
+    }
+
+    .overlay-lose .popup-title {
+      display: flex;
+      min-height: 100px;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 5px;
+      width: 100%;
+      text-align: center;
+      background-color: #3187af;
+      color: #ffffff;
+      font-size: 36px;
+      text-transform: uppercase;
     }
   </style>
 </head>
@@ -44,10 +96,26 @@
 <body>
   <h1 class="game-title">Maze Ball</h1>
   <div class="game">
-      <div class="timer">0:<span id="timer">59</span></div>
-      <div class="map">
-          <canvas class="canvas"></canvas>
-      </div>
+    <div class="timer">0:<span id="timer">59</span></div>
+    <div class="map">
+      <canvas class="canvas"></canvas>
+    </div>
+  </div>
+  <div class="overlay-lose" id="overlay-lose">
+    <div class="popup">
+      <div class="popup-title">Ой, проиграл!</div>
+      <div class="popup-close" onclick="hideOverlayLose()"> &times;</div>
+      <!-- /.popup-close -->
+    </div>
+    <!-- /.popup -->
+  </div>
+  <div class="overlay-lose" id="overlay-win">
+    <div class="popup">
+      <div class="popup-title" id='winnerText'></div>
+      <div class="popup-close" onclick="hideOverlayWin()"> &times;</div>
+      <!-- /.popup-close -->
+    </div>
+    <!-- /.popup -->
   </div>
 </body>
 <script src="static/game.js?x12400"></script>

@@ -1,5 +1,8 @@
 var socket = io();
 var time = document.getElementById('timer');
+var overlayLose = document.getElementById('overlay-lose');
+var overlayWin = document.getElementById('overlay-win');
+var winnerText = document.getElementById('winnerText');
 // socket.on('message', function(data) {
 //     console.log(data);
 // });
@@ -34,6 +37,15 @@ var finish = {
 // }
 // setTimeout(gameTime, 1000);
 
+
+// Скрываем всплывашку поражения
+function hideOverlayLose() {
+  overlayLose.style.display = "none";
+}
+// Скрываем победную всплывашку
+function hideOverlayWin() {
+  overlayWin.style.display = "none";
+}
 // Составляем лабиринт из линий
 function addMaze(xx, yy, wid, hei, i) {
   maze[i] = {
@@ -169,12 +181,16 @@ socket.on('state', function (players) {
         let line = maze[lin];
         if (checkCollision(player, line)) {
           console.log("Вы проиграли, " + player.name);
+          overlayLose.style.display = "block";
         }
         if (checkCollision(player, finish)) {
           let res = 59 - timer.innerHTML;
           if (res < 10) {
             res = "0" + res;
           }
+          overlayWin.style.display = "block";
+          winnerText.innerHTML = player.name + "!\n Ваш результат 0:" + res;
+          winnerText.style.textTransform = "none";
           console.log(player.name + ", вы прошли лабиринт за 0:" + res);
          }
       } 
