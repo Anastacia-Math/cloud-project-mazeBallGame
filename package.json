@@ -1,0 +1,17 @@
+{
+  "name": "mazeball",
+  "dependencies": {
+    "@types/socket.io": "^2.1.1",
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  },
+  "version": "1.0.0",
+  "description": "Multiplayer game",
+  "main": "index.html",
+  "devDependencies": {},
+  "scripts": {
+    "test": "hello, my friend"
+  },
+  "author": "",
+  "license": "ISC"
+}

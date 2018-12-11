@@ -1,0 +1,55 @@
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maze Ball</title>
+  <!--<link rel="stylesheet" href="/css/style.css" type="text/css">-->
+  <script src="socket.io/socket.io.js?x12400"></script>
+  <!--<script src="/node_modules/socket.io/lib/socket.js"></script>-->
+  <style>
+    .game-title {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 48px;
+      color: #191f18;
+    }
+
+    .timer {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .canvas {
+      position:fixed;
+      top: center;
+      left: center;
+      width: 670px;
+      height: 500px;
+      margin: 0 auto;
+      border: 1px solid blue;
+    }
+
+    .map {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="game-title">Maze Ball</h1>
+  <div class="game">
+      <div class="timer">0:<span id="timer">59</span></div>
+      <div class="map">
+          <canvas class="canvas"></canvas>
+      </div>
+  </div>
+</body>
+<script src="static/game.js?x12400"></script>
+
+</html>
